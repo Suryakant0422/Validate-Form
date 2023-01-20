@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validating Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Validating Web Forms</h1>
+    <div class="container">
+    <div class="form">
+        <p >First Name</p>
+        <input onkeyup="fname()" type="text" name="firstname" id="firstName" placeholder="Enter your First Name"> 
+         <h4 id="firstnametext"></h4>
+    </div>
+    <div class="form">
+        <p >Last Name</p>
+        <input onkeyup="lname()" type="text" name="lastname" id="lastName" placeholder="Enter your Last Name">
+        <h4 id="lastnametext"></h4>
+    </div>
+    <div class="form">
+        <p >Email</p>
+        <input onkeyup="email()" type="email" name="email" id="mail" placeholder="Enter your Email Id">
+        <h4 id="emailtext"></h4>
+    </div>
+    <div class="form">
+        <p >Password</p>
+        <input onkeyup="password()" type="password" name="password" id="password" placeholder="Enter your password">
+        <h4 id="passwordtext"></h4>
+    </div>
+    <div class="form">
+        <p >Telephone</p>
+        <input onkeyup="number()" type="number" name="number" id="number" placeholder="Enter your mobile or phone number">
+        <h4 id="numtext"></h4>
+    </div>
+    <div class="form">
+        <p >Your Bio</p>
+        <input onkeyup="bio()" type="text" name="bio" id="bio" placeholder="Enter your bio">
+        <h4 id="biotext"></h4>
+    </div>
+    <div class="buttonSubmit">
+        <button type="button"  id="submitButton" >Submit</button>
+    </div>
+</div>
+     <script>
+        var submitButton =document.getElementById("submitButton");
+        function fname() {
+             const firstName = document.getElementById("firstName");
+             const text = document.getElementById("firstnametext");
+             text.innerHTML="";
+             if(firstName.value === " " || firstName.value.length < 3 || firstName.value.length >16) {
+             firstName.style.backgroundColor="tomato";
+             submitButton.style.backgroundColor= "black";
+             text.innerHTML ="First name must be alphanumeric and contain 3-16 charcters.";
+             text.style.color="orange";
+             text.style.textAlign="center";
+            }
+           else {
+            firstName.style.backgroundColor="rgb(116, 212, 116)";
+            const text = document.getElementById("firstnametext");
+            text.innerHTML="";
+            submitButton.style.backgroundColor= "rgb(116, 212, 116)";
+           }
+            
+        }
+        function lname() {
+            const lastName = document.getElementById("lastName");
+            const text = document.getElementById("lastnametext");
+             text.innerHTML="";
+             if(lastName.value == " " || lastName.value.length < 3 || lastName.value.length >16) {
+             lastName.style.backgroundColor="tomato";
+             submitButton.style.backgroundColor= "black";
+             text.innerHTML ="Last name must be alphanumeric and contain 3-16 charcters.";
+             text.style.color="orange";
+             text.style.textAlign="center";
+                
+            }
+           else{
+            lastName.style.backgroundColor="rgb(116, 212, 116)";
+            const text = document.getElementById("lastnametext");
+            text.innerHTML="";
+            submitButton.style.backgroundColor= "rgb(116, 212, 116)";
+           }
+            
+        }
+        function email() {
+            const emailid = document.getElementById("mail");
+            const text = document.getElementById("emailtext");
+            text.innerHTML="";
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailid.value)){
+             emailid.style.backgroundColor="rgb(116, 212, 116)";
+            const text = document.getElementById("emailtext");
+            text.innerHTML=""; 
+            submitButton.style.backgroundColor= "rgb(116, 212, 116)";
+            }else{
+              emailid.style.backgroundColor="tomato";
+              submitButton.style.backgroundColor= "black";
+             text.innerHTML ="Email must be a valid email address e.g. example@example.com";
+             text.style.color="orange";
+             text.style.textAlign="center";
+            }
+            
+        }
+        function password() {
+            const password = document.getElementById("password")
+            const text = document.getElementById("passwordtext");
+            text.innerHTML="";
+            if( /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(password.value)){
+            password.style.backgroundColor="rgb(116, 212, 116)";
+            const text = document.getElementById("passwordtext");
+            text.innerHTML="";
+            submitButton.style.backgroundColor= "rgb(116, 212, 116)";
+            }
+            else{
+             password.style.backgroundColor="tomato";
+             submitButton.style.backgroundColor= "black";
+             text.innerHTML ="Password must be alphanumeric (@, _ and - are allowed) and betwwen 6-20 characters";
+             text.style.color="orange";
+             text.style.textAlign="center";
+
+            }
+            
+        }
+        function number() {
+            const number = document.getElementById("number");
+            const text = document.getElementById("numtext");
+            text.innerHTML="";
+            if(/^\d{11}$/.test(number.value)){
+            number.style.backgroundColor="rgb(116, 212, 116)";
+            const text = document.getElementById("numtext");
+            text.innerHTML=""; 
+            submitButton.style.backgroundColor= "rgb(116, 212, 116)";  
+            }else{
+             number.style.backgroundColor="tomato";
+             submitButton.style.backgroundColor= "black";
+             text.innerHTML ="A vallid telephone number (11digits and 333-333-3334)";
+             text.style.color="orange";
+             text.style.textAlign="center";   
+            }
+            
+        }
+        function bio() {
+            const bio = document.getElementById("bio");
+            const text = document.getElementById("biotext");
+            text.innerHTML="";
+            if(/^(?=.{8,50}$)[a-z\s_-]+$/.test(bio.value)){
+            bio.style.backgroundColor="rgb(116, 212, 116)";
+            const text = document.getElementById("biotext");
+            text.innerHTML="";
+            submitButton.style.backgroundColor= "rgb(116, 212, 116)";  
+            }else{
+            bio.style.backgroundColor="tomato";
+            submitButton.style.backgroundColor= "black";
+             text.innerHTML ="Bio must contain only lowercase letters, underscores, hyphens and be 8 - 50 characters";
+             text.style.color="orange";
+             text.style.textAlign="center"; 
+            }
+            
+        }
+
+     </script>
+</body>
+</html>
